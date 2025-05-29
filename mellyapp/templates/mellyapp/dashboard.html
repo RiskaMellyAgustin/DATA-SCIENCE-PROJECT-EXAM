@@ -1,0 +1,76 @@
+{% extends 'mellyapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-10 px-6">
+    <div class="max-w-4xl mx-auto">
+        <!-- Tambahkan Gambar Captain America -->
+        <div class="mb-8 text-center">
+            <img src="{% static 'mellyapp/images/CAPTAIN_AMERICA.png' %}" alt="Captain America"
+                 class="mx-auto w-48 md:w-64 rounded-xl shadow-lg border border-gray-300">
+        </div>
+        <h1 class="text-3xl font-bold text-[#192959] mb-8">Prediction Dashboard</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Card 5: Dropout Prediction (Exist Data) -->
+            <div class="group bg-white shadow-lg shadow-[0_0_10px_#19295933] rounded-2xl p-6 border border-[#192959]/40 transition-all duration-300 hover:shadow-[0_0_25px_#19295999] hover:scale-105">
+                <h2 class="text-xl font-semibold text-[#192959] mb-4">Dropout Prediction (Exist Data)</h2>
+                <p class="text-gray-600 mb-4">
+                    Predict dropout risk based on existing dataset using XGBoost model.
+                </p>
+                <a href="{% url 'mellyapp:predict_dropout_exist' %}" class="inline-block bg-[#192959] hover:bg-[#141d42] text-white font-medium py-2 px-4 rounded-xl transition">
+                     Prediction
+                </a>
+            </div>
+
+            <!-- Card 1: Prediksi Dropout -->
+            <div class="group bg-white shadow-lg shadow-[0_0_10px_#19295933] rounded-2xl p-6 border border-[#192959]/40 transition-all duration-300 hover:shadow-[0_0_25px_#19295999] hover:scale-105">
+                <h2 class="text-xl font-semibold text-[#192959] mb-4">Dropout Prediction with Xboost</h2>
+                <p class="text-gray-600 mb-4">
+                    Using the XGBoostClassifier Machine Learning model to predict whether students will drop out or remain active.
+                </p>
+                <a href="{% url 'mellyapp:predict_dropout' %}" class="inline-block bg-[#192959] hover:bg-[#141d42] text-white font-medium py-2 px-4 rounded-xl transition">
+                    Prediction
+                </a>
+            </div>
+
+            <!-- Card 2: Anomaly Detection -->
+            <div class="group bg-white shadow-lg shadow-[0_0_10px_#19295933] rounded-2xl p-6 border border-[#192959]/40 transition-all duration-300 hover:shadow-[0_0_25px_#19295999] hover:scale-105">
+                <h2 class="text-xl font-semibold text-[#192959] mb-4">Anomaly Detection</h2>
+                <p class="text-gray-600 mb-4">
+                   A model for predicting student academic performance based on whether learning activities are normal or not.
+                </p>
+                <a href="{% url 'mellyapp:predict_anomaly' %}" class="inline-block bg-[#192959] hover:bg-[#141d42] text-white font-medium py-2 px-4 rounded-xl transition">
+                     Prediction
+                </a>
+            </div>
+
+            <!-- Card 3: Prediksi Dropout (Regresi) -->
+            <div class="group bg-white shadow-lg shadow-[0_0_10px_#19295933] rounded-2xl p-6 border border-[#192959]/40 transition-all duration-300 hover:shadow-[0_0_25px_#19295999] hover:scale-105">
+                <h2 class="text-xl font-semibold text-[#192959] mb-4">Dropout Prediction (Regression)</h2>
+                <p class="text-gray-600 mb-4">
+                    Using a regression approach to estimate the probability of students dropping out.
+                </p>
+                <a href="{% url 'mellyapp:predict_dropout_rf' %}" class="inline-block bg-[#192959] hover:bg-[#141d42] text-white font-medium py-2 px-4 rounded-xl transition">
+                    Prediction
+                </a>
+            </div>
+
+            <!-- Card 4: Clustering Anomali -->
+            <div class="group bg-white shadow-lg shadow-[0_0_10px_#19295933] rounded-2xl p-6 border border-[#192959]/40 transition-all duration-300 hover:shadow-[0_0_25px_#19295999] hover:scale-105">
+                <h2 class="text-xl font-semibold text-[#192959] mb-4">Anomaly Detection Clustering</h2>
+                <p class="text-gray-600 mb-4">
+                    Grouping students into clusters based on their learning behaviors.
+                </p>
+                <a href="{% url 'mellyapp:predict_cluster_anomaly' %}" class="inline-block bg-[#192959] hover:bg-[#141d42] text-white font-medium py-2 px-4 rounded-xl transition">
+                    Prediction
+                </a>
+            </div>
+
+            
+
+        </div>
+    </div>
+</div>
+{% endblock %}

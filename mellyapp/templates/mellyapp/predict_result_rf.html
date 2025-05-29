@@ -1,0 +1,59 @@
+{% extends 'mellyapp/base.html' %}
+{% load static %}
+{% block title %}Hasil Prediksi Dropout (Regresi){% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold text-primary mb-6">Hasil Prediksi Dropout (Random Forest)</h2>
+
+<div class="bg-white shadow-md rounded p-6 mb-6">
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>Age:</strong> {{ age }} years</p>
+    <p><strong>Total Aktivity:</strong> {{ total_activities }}</p>
+    <p><strong>Total Learning Duration:</strong> {{ total_duration }} menit</p>
+
+    <hr class="my-4">
+    <p><strong>Score Dropout Prediction:</strong> {{ dropout_score|floatformat:2 }}</p>
+
+    {% if dropout_score >= 0.5 %}
+        <p class="text-orange-600 font-semibold">⚠️ Students at risk of dropping out.</p>
+    {% else %}
+        <p class="text-green-600 font-semibold">✅ Students are likely to remain active.</p>
+    {% endif %}
+</div>
+
+<!-- Visualisasi Chart.js -->
+<div class="bg-white shadow-md rounded p-6 mb-6 max-w-md mx-auto">
+    <canvas id="dropoutChart" height="300"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('dropoutChart').getContext('2d');
+    const dropoutScore = {{ dropout_score|floatformat:2 }};
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Dropout (%)', 'Aktif (%)'],
+            datasets: [{
+                data: [Math.round(dropoutScore * 100), Math.round((1 - dropoutScore) * 100)],
+                backgroundColor: ['#f97316', '#22c55e'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            cutout: '70%',
+            plugins: {
+                legend: { position: 'bottom' },
+                title: {
+                    display: true,
+                    text: 'Peluang Dropout Mahasiswa',
+                    font: {
+                        size: 18
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'mellyapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-4xl"> <!-- max-w-4xl biar lebar -->
+        <h2 class="text-2xl font-bold text-[#192959] mb-6 text-center">Dropout Prediction (Exist Data)</h2>
+
+        <form method="POST" class="space-y-4 mb-6">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="w-full bg-[#192959] hover:bg-[#141d42] text-white font-semibold py-2 px-4 rounded-xl transition">
+                Search & Predict
+            </button>
+        </form>
+
+        {% if result %}
+        <div class="flex flex-col md:flex-row md:space-x-8"> <!-- Flex Row di desktop -->
+            <!-- Left: Hasil Prediksi -->
+            <div class="md:w-1/2">
+                <h3 class="text-xl font-semibold text-[#192959] mb-4">Hasil Prediksi:</h3>
+                <p><strong>Nama:</strong> {{ result.name }}</p>
+                <p><strong>Student ID:</strong> {{ result.stu_id }}</p>
+                <p><strong>Gender:</strong> {{ result.gender }}</p>
+                <p><strong>Age:</strong> {{ result.age }}</p>
+                <p><strong>Total Activities:</strong> {{ result.total_activities }}</p>
+                <p><strong>Total Duration (minutes):</strong> {{ result.total_duration|floatformat:2 }}</p>
+                <p><strong>Prediction:</strong> {{ result.prediction }}</p>
+                <p><strong>Probability of Dropout:</strong> {{ result.probability|floatformat:2 }}</p>
+            </div>
+
+            <!-- Right: Chart -->
+            <div class="md:w-1/2 mt-6 md:mt-0 flex justify-center items-center">
+                <div class="w-64 h-64">
+                    <h3 class="text-xl font-semibold text-[#192959] text-center">Chart Probability</h3>
+                    <canvas id="dropoutChart" class="mt-4"></canvas>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <p class="text-red-500 mt-4">{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% if result %}
+<script>
+    const ctx = document.getElementById('dropoutChart').getContext('2d');
+    const dropoutProb = {{ result.probability|floatformat:2 }};
+    const activeProb = (1 - dropoutProb).toFixed(2);
+
+    const dropoutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Dropout', 'Active'],
+            datasets: [{
+                label: 'Probability',
+                data: [dropoutProb, activeProb],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Dropout Prediction Probability'
+                }
+            }
+        }
+    });
+</script>
+{% endif %}
+
+{% endblock %}

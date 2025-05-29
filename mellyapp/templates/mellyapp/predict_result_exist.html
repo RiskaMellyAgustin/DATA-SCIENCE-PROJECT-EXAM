@@ -1,0 +1,71 @@
+{% extends 'mellyapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+        <h2 class="text-2xl font-bold text-[#192959] mb-6 text-center">Prediction Result (Exist Data)</h2>
+
+        {% if result %}
+        <p><strong>Name:</strong> {{ result.name }}</p>
+        <p><strong>Student ID:</strong> {{ result.stu_id }}</p>
+        <p><strong>Gender:</strong> {{ result.gender }}</p>
+        <p><strong>Age:</strong> {{ result.age }}</p>
+        <p><strong>Total Activities:</strong> {{ result.total_activities }}</p>
+        <p><strong>Total Duration (minutes):</strong> {{ result.total_duration|floatformat:2 }}</p>
+        <hr class="my-4">
+        <p><strong>Prediction:</strong> {{ result.prediction }}</p>
+        <p><strong>Probability of Dropout:</strong> {{ result.probability|floatformat:2 }}</p>
+
+        <!-- Chart.js Canvas -->
+        <h3 class="text-xl font-semibold text-[#192959] mt-6">Chart Probability</h3>
+        <canvas id="dropoutChart" class="mt-4"></canvas>
+        {% else %}
+        <p>No prediction result found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('dropoutChart').getContext('2d');
+    {% if result %}
+    const dropoutProb = {{ result.probability|floatformat:2 }};
+    const activeProb = (1 - dropoutProb).toFixed(2);
+
+    const dropoutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Dropout', 'Active'],
+            datasets: [{
+                label: 'Probability',
+                data: [dropoutProb, activeProb],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',  // Red
+                    'rgba(54, 162, 235, 0.7)'   // Blue
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Dropout Prediction Probability'
+                }
+            }
+        }
+    });
+    {% endif %}
+</script>
+{% endblock %}

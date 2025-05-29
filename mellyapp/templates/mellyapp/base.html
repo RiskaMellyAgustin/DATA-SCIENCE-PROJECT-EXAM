@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MellyApp{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#192959',
+                        secondary: '#f1f5f9',
+                        accent: '#e0e7ff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Static CSS -->
+    <link rel="stylesheet" href="{% static 'mellyapp/style.css' %}">
+</head>
+<body class="bg-secondary text-black-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <header class="bg-primary text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">📊 MellyApp ML Dashboard</h1>
+            <nav class="space-x-4">
+                <a href="{% url 'mellyapp:dashboard' %}" class="hover:bg-accent hover:text-primary py-2 px-4 rounded transition-all duration-200">
+                    🏠 Dashboard
+                </a>
+                <a href="{% url 'home:landing' %}" class="hover:bg-accent hover:text-primary py-2 px-4 rounded transition-all duration-200">
+                    🚀 Main Menu
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-6">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-4">
+        <p>&copy; 2025 MellyApp. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

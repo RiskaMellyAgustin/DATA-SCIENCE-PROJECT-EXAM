@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Difficulty Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'jenyapp/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Predict Course Difficulty</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <fieldset>
+                <legend>Student Information</legend>
+
+                <div class="form-group">
+                    <label for="id_gender">Gender</label>
+                    {{ form.gender }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_age">Age</label>
+                    {{ form.age }}
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Course and Activities</legend>
+
+                <div class="form-group">
+                    <label for="id_course_id">Course</label>
+                    {{ form.course_id }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_quiz_count">Quiz Count</label>
+                    {{ form.quiz_count }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_quiz_avg_duration">Average Quiz Duration (minutes)</label>
+                    {{ form.quiz_avg_duration }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_individual_assignment_count">Individual Assignment Count</label>
+                    {{ form.individual_assignment_count }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_individual_assignment_avg_duration">Average Individual Assignment Duration (minutes)</label>
+                    {{ form.individual_assignment_avg_duration }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_group_assignment_count">Group Assignment Count</label>
+                    {{ form.group_assignment_count }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_group_assignment_avg_duration">Average Group Assignment Duration (minutes)</label>
+                    {{ form.group_assignment_avg_duration }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_forum_count">Forum Count</label>
+                    {{ form.forum_count }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_forum_avg_duration">Average Forum Duration (minutes)</label>
+                    {{ form.forum_avg_duration }}
+                </div>
+            </fieldset>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h3>Prediction Result for {{ course_name }}</h3>
+            <p><strong>Predicted Difficulty:</strong> {{ prediction }}</p>
+            <p><strong>Recommendation:</strong> {{ recommendation }}</p>
+        </div>
+        {% endif %}
+
+        {% if bar_chart_img or recommendation_chart_img %}
+        <div class="chart-row">
+            {% if bar_chart_img %}
+            <div class="image">
+                <h4>Learning Activity Distribution</h4>
+                <img src="{% static bar_chart_img %}" alt="Learning Activity Chart">
+            </div>
+            {% endif %}
+
+            {% if recommendation_chart_img %}
+            <div class="image">
+                <h4>Recommended Time Allocation</h4>
+                <img src="{% static recommendation_chart_img %}" alt="Recommended Chart">
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

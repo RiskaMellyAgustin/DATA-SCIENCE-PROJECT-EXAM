@@ -1,0 +1,22 @@
+{% extends 'mellyapp/base.html' %}
+
+{% block content %}
+<h2 class="text-2xl font-bold text-primary mb-6">Hasil Deteksi Anomali</h2>
+
+<div class="bg-white shadow-md rounded p-6">
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>Age:</strong> {{ age }}</p>
+    <p><strong>Total Activity:</strong> {{ total_activities }}</p>
+    <p><strong>Learning Duration:</strong> {{ total_duration }} menit</p>
+
+    <hr class="my-4">
+
+    {% if anomaly == -1 %}
+        <p class="text-orange-600 font-semibold">⚠️ Detection: Unusual Activity</p>
+        <p>This student may need attention. Outlier Score:{{ score|floatformat:4 }}</p>
+    {% else %}
+        <p class="text-green-600 font-semibold">✅ Detection: Normal Activity</p>
+        <p>No abnormalities were detected in learning behavior. Score: {{ score|floatformat:4 }}</p>
+    {% endif %}
+</div>
+{% endblock %}

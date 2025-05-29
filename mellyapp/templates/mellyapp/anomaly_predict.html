@@ -1,0 +1,14 @@
+{% extends 'mellyapp/base.html' %}
+{% load static %}
+
+{% block title %}Anomaly Detection{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold text-primary mb-6">Learning Behavior Anomaly Detection</h2>
+
+<form method="POST" class="bg-white p-6 shadow rounded space-y-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-primary text-white px-4 py-2 rounded">Check for Anomalies</button>
+</form>
+{% endblock %}

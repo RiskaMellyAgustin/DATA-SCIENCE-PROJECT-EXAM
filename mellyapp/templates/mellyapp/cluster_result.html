@@ -1,0 +1,57 @@
+{% extends 'mellyapp/base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
+    <h2 class="text-2xl font-bold mb-4">Result Clustering</h2>
+
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>Age:</strong> {{ age }}</p>
+    <p><strong>Total Activity:</strong> {{ total_activities }}</p>
+    <p><strong>Total Duration:</strong> {{ total_duration }}</p>
+
+    <hr class="my-4">
+
+    <p><strong>Cluster:</strong> Cluster {{ cluster_id }}</p>
+    <p class="mt-2 text-lg font-semibold">{{ cluster_desc }}</p>
+
+    <canvas id="clusterChart" width="400" height="400" class="mt-6"></canvas>
+</div>
+
+<!-- CDN Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('clusterChart').getContext('2d');
+
+    const data = {
+        labels: ['Cluster {{ cluster_id }}', 'Lainnya'],
+        datasets: [{
+            label: 'Distribusi Cluster Mahasiswa',
+            data: [1, 2], // Tampilan dummy (mahasiswa ini 1, lainnya 2)
+            backgroundColor: [
+                '#3b82f6', // Cluster milik mahasiswa
+                '#e5e7eb'  // Cluster lain
+            ],
+            borderColor: ['#ffffff', '#ffffff'],
+            borderWidth: 2
+        }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                title: {
+                    display: true,
+                    text: 'Visualisasi Hasil Clustering Mahasiswa'
+                }
+            }
+        }
+    };
+
+    new Chart(ctx, config);
+</script>
+{% endblock %}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Results</title>
+    <style>
+        :root {
+            --asgard-gold: #FDBB30;
+            --stormbreaker-blue: #00BCD4;
+            --thanos-purple: #5D2D8B;
+            --infinity-orange: #FF6B35;
+            --asgard-dark: #1A1A2E;
+            --asgard-light: #E6F1FF;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            color: var(--asgard-light);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        h2, h3 {
+            color: var(--asgard-gold);
+            text-align: center;
+            text-shadow: 0 0 10px rgba(253, 187, 48, 0.5);
+            position: relative;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        h2:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--stormbreaker-blue), var(--infinity-orange));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .result-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(26, 26, 46, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+            border: 2px solid var(--asgard-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-container:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(253,187,48,0.1) 0%, rgba(0,0,0,0) 70%);
+            animation: pulse 8s infinite linear;
+            z-index: 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        strong {
+            color: var(--stormbreaker-blue);
+            font-weight: bold;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        li {
+            background: rgba(93, 45, 139, 0.3);
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 8px;
+            border-left: 4px solid var(--infinity-orange);
+            min-width: 150px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            background: rgba(93, 45, 139, 0.5);
+        }
+        
+        .chart-container {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--asgard-gold);
+            margin-top: 20px;
+        }
+        
+        /* Infinity Stone colors for probabilities */
+        li:nth-child(1) { /* High - Mind Stone (Yellow) */
+            border-left-color: var(--asgard-gold);
+        }
+        
+        li:nth-child(2) { /* Medium - Space Stone (Blue) */
+            border-left-color: var(--stormbreaker-blue);
+        }
+        
+        li:nth-child(3) { /* Low - Reality Stone (Red) */
+            border-left-color: #FF3E3E;
+        }
+        
+        /* Thor's hammer animation */
+        @keyframes hammerStrike {
+            0% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+            100% { transform: rotate(-10deg); }
+        }
+        
+        .prediction-highlight {
+            font-size: 1.3em;
+            color: var(--asgard-gold);
+            display: inline-block;
+            animation: hammerStrike 2s infinite;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .result-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+            }
+            
+            ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h2>⚡ Prediction Result ⚡</h2>
+        
+        <p><strong>Gender:</strong> {{ gender }}</p>
+        <p><strong>Course:</strong> {{ course }}</p>
+        <p><strong>Total Activity:</strong> {{ features.Total_Activity }}</p>
+        <p><strong>Average Duration:</strong> {{ features.Average_Duration }} </p>
+        
+        <p><strong>🎯 Predicted Performance:</strong> 
+            <span class="prediction-highlight">{{ prediction }}</span>
+        </p>
+        
+        <h3>Prediction Probabilities</h3>
+        <ul>
+            <li>High: {{ proba.High|floatformat:2 }}%</li>
+            <li>Medium: {{ proba.Medium|floatformat:2 }}%</li>
+            <li>Low: {{ proba.Low|floatformat:2 }}%</li>
+        </ul>
+        
+        <h3>Performance Distribution</h3>
+        <div class="chart-container">
+            {{ chart_html|safe }}
+        </div>
+    </div>
+
+</body>
+</html>

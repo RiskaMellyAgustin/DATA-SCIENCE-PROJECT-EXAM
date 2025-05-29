@@ -1,0 +1,68 @@
+{% extends 'mellyapp/base.html' %}
+{% load static %}
+
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-bold text-primary mb-6">🧑‍🎓 Student Academic Status</h2>
+
+<div class="bg-white shadow-md rounded p-6 mb-6">
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>Age:</strong> {{ age }} year</p>
+    <p><strong>Total Activity:</strong> {{ total_activities }}</p>
+    <p><strong>Total Learning Duration:</strong> {{ total_duration }} minutes</p>
+
+    <hr class="my-4">
+
+    {% if prediction == 1 %}
+        <h2 class="text-orange-600 text-xl font-semibold">⚠️ Status: Needs Attention</h2>
+        <p>Your activity is detected as low. Try to be more active so that your learning remains optimal. 💡</p>
+    {% else %}
+        <h2 class="text-green-600 text-xl font-semibold">✅ Status: Active</h2>
+        <p>Good job! You are a student who is actively participating in learning. Keep it up! 🎉</p>
+    {% endif %}
+</div>
+
+<!-- Chart.js Doughnut Chart -->
+<div class="bg-white shadow-md rounded p-6">
+    <h3 class="text-lg font-semibold text-primary mb-4">Visualization of Prediction Results</h3>
+    <div class="w-full max-w-md mx-auto" style="height: 300px;">
+        <canvas id="predictionChart"></canvas>
+    </div>
+</div>
+
+<!-- Load Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('predictionChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Aktif', 'Dropout'],
+            datasets: [{
+                label: 'Prediksi',
+                data: [
+                    {% if prediction == 0 %}1{% else %}0{% endif %},
+                    {% if prediction == 1 %}1{% else %}0{% endif %}
+                ],
+                backgroundColor: ['#22c55e', '#ef4444'],
+                borderColor: ['#fff'],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                title: {
+                    display: true,
+                    text: 'Distribution of Student Prediction Status'
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

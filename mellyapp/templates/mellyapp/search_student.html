@@ -1,0 +1,31 @@
+<!-- templates/search_student.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Student</title>
+</head>
+<body>
+    <h1>Search Student by ID</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+    {% if student %}
+        <h2>Student Details:</h2>
+        <ul>
+            <li><strong>ID:</strong> {{ student.student_id }}</li>
+            <li><strong>Name:</strong> {{ student.name }}</li>
+            <li><strong>Gender:</strong> {{ student.gender }}</li>
+            <li><strong>Age:</strong> {{ student.age }}</li>
+            <li><strong>Total Activities Done:</strong> {{ student.total_activities_done }}</li>
+            <li><strong>Total Duration (minutes):</strong> {{ student.total_duration_minutes }}</li>
+            <!-- Tambahkan detail lain sesuai kebutuhan -->
+        </ul>
+    {% elif form.is_bound %}
+        <p>No student found with the provided ID.</p>
+    {% endif %}
+</body>
+</html>

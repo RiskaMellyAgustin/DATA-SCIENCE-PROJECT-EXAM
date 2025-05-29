@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spider-Verse Student Segment Predictor</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #1f1f1f, #3d3d3d);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px;
+      }
+
+      .logo {
+        width: 120px;
+        margin-bottom: 20px;
+      }
+
+      .hero {
+        font-family: "Bangers", cursive;
+        font-size: 48px;
+        color: #ff0000;
+        text-shadow: 2px 2px 8px #000;
+      }
+
+      .description {
+        max-width: 700px;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          rgba(30, 30, 30, 0.85),
+          rgba(60, 60, 60, 0.85)
+        );
+        padding: 30px 40px;
+        border-radius: 16px;
+        margin-top: 25px;
+        line-height: 1.7;
+        font-size: 18px;
+        color: #ddd;
+        box-shadow: 0 0 15px rgba(20, 20, 20, 0.7);
+        border: 1.5px solid rgba(80, 80, 80, 0.8);
+        backdrop-filter: blur(10px);
+        font-weight: 600;
+      }
+
+      @keyframes glowPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+          border-color: rgba(255, 0, 0, 0.6);
+        }
+        50% {
+          box-shadow: 0 0 25px rgba(255, 50, 50, 0.8);
+          border-color: rgba(255, 50, 50, 0.8);
+        }
+      }
+
+      .predict-btn {
+        margin-top: 35px;
+        padding: 14px 32px;
+        font-size: 18px;
+        background-color: hsl(0, 81.7%, 49.4%);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+        transition: background 0.3s ease;
+      }
+
+      .predict-btn:hover {
+        background-color: #ff3333;
+      }
+
+      .footer {
+        margin-top: 50px;
+        font-size: 14px;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="img/spider-logo.png" class="logo">
+    <div class="hero">Discover Your Student Style</div>
+
+    <div class="description">
+      Everyone learns differently some dive deep, some like to collaborate,
+      others prefer to pace themselves. This tool helps you find your student
+      segment so you can study smarter, not harder. Ready to unlock your
+      learning superpower? Let’s get started!
+    </div>
+
+    <form action="predict/">
+      <button class="predict-btn">🕸️ Swing Into Segmentation </button>
+    </form>
+
+    <div class="footer">
+      &copy; 2025 ValenciaApp Student Segment Predictor. All rights reserved.
+  </body>
+</html>

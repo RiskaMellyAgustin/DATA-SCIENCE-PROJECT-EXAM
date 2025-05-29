@@ -1,0 +1,16 @@
+# Ignore virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+
+# Model & dataset (kalau ada)
+*.pkl
+*.h5
+*.pt
+
+# OS generated files
+Thumbs.db
+ehthumbs.db

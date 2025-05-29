@@ -1,0 +1,11 @@
+{% extends 'mellyapp/base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
+    <h2 class="text-2xl font-bold mb-4">Clustering Detection Anomaly</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-[#192959] text-white px-4 py-2 rounded">Cluster Prediction</button>
+    </form>
+</div>
+{% endblock %}

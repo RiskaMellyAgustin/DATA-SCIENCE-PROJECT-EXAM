@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avengers DB Project</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .neon-glow {
+      box-shadow: 0 0 10px #a855f7, 0 0 20px #9333ea, 0 0 30px #7e22ce;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Header -->
+  <header class="bg-black text-white shadow-md sticky top-0 z-10 border-b-4 border-black">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 neon-glow animate-pulse">
+        Group 3 Project - Data Science 1
+      </h1>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="py-12 px-3 relative">
+    <div class="flex justify-center my-5">
+      <img src="{% static 'home/WeDashboard.jpg' %}" alt="Banner Avengers"
+           class="w-full max-w-4xl h-auto rounded-3xl shadow-xl">
+    </div>
+    <div class="flex justify-center my-6">
+      <div class="w-64 h-1 bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 animate-pulse rounded-full shadow-md"></div>
+    </div>
+    <div class="max-w-3xl mx-auto text-center px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-purple-300 mb-4">About Our Project</h2>
+      <p class="text-purple-200 text-lg leading-relaxed">
+        This project integrates Machine Learning to intelligently and personally understand students' learning patterns.
+        It is part of an examcase2 series that showcases how data-driven solutions can support and enhance the learning experience for students.
+        Built through collaboration and inspired by the advanced technologies of the modern era—like the teamwork of the Avengers—this system provides valuable insights to empower both students and educators in achieving academic success.
+        Developed with Django, Python, and various Machine Learning models, our solution aims to create a smart educational environment where every learner's journey is optimized and supported.
+      </p>
+      <p class="mt-4 text-purple-400">Built with Django, Python, TailwindCSS, HTML, CSS, JS, and Our Analytics.</p>
+    </div>
+    <div class="flex justify-center mt-10">
+      <div class="animate-bounce">
+        <svg class="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fitur Section -->
+  <div class="py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-bold text-purple-300 mb-10 text-center">Feature Dashboard</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Fitur Cards -->
+        <div class="bg-black bg-opacity-30 border border-purple-700 rounded-xl p-6 neon-glow hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-purple-300 mb-2">🎯 Best Study Time Recommendations</h3>
+          <p class="text-purple-200 mb-4">Recommendations for the best study time for students based on activity data and academic targets.</p>
+          <a href="/alysiaapp/" class="text-white bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-lg inline-block font-medium">Enter</a>
+        </div>
+
+        <div class="bg-black bg-opacity-30 border border-blue-700 rounded-xl p-6 neon-glow hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-blue-300 mb-2">🎯 Smart Dropout & Student Anomalies for Effective Learning Recommendations</h3>
+          <p class="text-blue-200 mb-4">Dropout Risk Prediction and Anomaly Detection of Student Learning Behavior for Early Academic Intervention</p>
+          <a href="/mellyapp/" class="text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg inline-block font-medium">Enter</a>
+        </div>
+
+        <div class="bg-black bg-opacity-30 border border-indigo-700 rounded-xl p-6 neon-glow hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-indigo-300 mb-2">🎯 Smart Course Recommendations</h3>
+          <p class="text-indigo-200 mb-4">Prediction System To Know Course Difficulty Level</p>
+          <a href="/jenyapp/" class="text-white bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg inline-block font-medium">Enter</a>
+        </div>
+
+        <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-xl p-6 neon-glow hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-yellow-300 mb-2">🎯 Personalize Prediction For Student Effectiveness</h3>
+          <p class="text-yellow-100 mb-4">Clustering to find learning patterns from students' preferred learning activities and times.</p>
+          <a href="/ruthapp/" class="text-white bg-yellow-500 hover:bg-yellow-400 px-4 py-2 rounded-lg inline-block font-medium">Enter</a>
+        </div>
+
+        <div class="bg-black bg-opacity-30 border border-red-600 rounded-xl p-6 neon-glow hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-red-300 mb-2">🎯 Student Segmentation Prediction</h3>
+          <p class="text-red-200 mb-4">Predicting Active, Passive and Intensive Student Segmentation</p>
+          <a href="/valenciaapp/" class="text-white bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg inline-block font-medium">Enter</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- About Members -->
+  <div class="py-12 px-6 bg-gradient-to-br from-gray-900 to-black">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-12 text-white">About Members</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+        <!-- Member Cards -->
+        <div class="bg-black/60 border border-purple-500 rounded-xl p-4 shadow-lg hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 20px 4px rgba(168, 85, 247, 0.5);">
+          <img src="{% static 'home/alysia.jpg' %}" alt="Alysia" class="w-36 h-36 object-cover mx-auto rounded-2xl border-2 border-purple-500 mb-4">
+          <p class="text-white font-semibold text-lg">Alysia Dapyaraka</p>
+          <p class="text-gray-300 text-sm mt-2">Best Study Time Recommendations - Responsible for creating study time prediction models based on activity data.</p>
+        </div>
+
+        <div class="bg-black/60 border border-purple-500 rounded-xl p-4 shadow-lg hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 20px 4px rgba(168, 85, 247, 0.5);">
+          <img src="{% static 'home/melly.jpg' %}" alt="Melly" class="w-36 h-36 object-cover mx-auto rounded-2xl border-2 border-purple-500 mb-4">
+          <p class="text-white font-semibold text-lg">Riska Melly Agustin</p>
+          <p class="text-gray-300 text-sm mt-2">Dropout & Anomaly Detection - Develops models for dropout risk and anomaly detection for effective learning recommendations.</p>
+        </div>
+
+        <div class="bg-black/60 border border-purple-500 rounded-xl p-4 shadow-lg hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 20px 4px rgba(168, 85, 247, 0.5);">
+          <img src="{% static 'home/jeny.jpg' %}" alt="Jeny" class="w-36 h-36 object-cover mx-auto rounded-2xl border-2 border-purple-500 mb-4">
+          <p class="text-white font-semibold text-lg">Jeny Fattahul Sisca Anjar Aeni</p>
+          <p class="text-gray-300 text-sm mt-2">Smart Course Recommendations - Focuses on predicting course difficulty levels for personalized recommendations.</p>
+        </div>
+
+        <div class="bg-black/60 border border-purple-500 rounded-xl p-4 shadow-lg hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 20px 4px rgba(168, 85, 247, 0.5);">
+          <img src="{% static 'home/ruth.jpg' %}" alt="Ruth" class="w-36 h-36 object-cover mx-auto rounded-2xl border-2 border-purple-500 mb-4">
+          <p class="text-white font-semibold text-lg">Ruth Marsaulina br Simatupang</p>
+          <p class="text-gray-300 text-sm mt-2">Personalized Learning Effectiveness - Clustering student learning behavior to improve study effectiveness.</p>
+        </div>
+
+        <div class="bg-black/60 border border-purple-500 rounded-xl p-4 shadow-lg hover:scale-105 transition-transform duration-300" style="box-shadow: 0 0 20px 4px rgba(168, 85, 247, 0.5);">
+          <img src="{% static 'home/valencia.jpg' %}" alt="Valencia" class="w-36 h-36 object-cover mx-auto rounded-2xl border-2 border-purple-500 mb-4">
+          <p class="text-white font-semibold text-lg">Valencia Greace Simeone Damanik</p>
+          <p class="text-gray-300 text-sm mt-2">Student Segmentation Prediction - Focuses on predicting student activity and engagement segments.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict Student Performance</title>
+     <style>
+        :root {
+            --asgard-gold: #FDBB30;
+            --asgard-blue: #1A4F8B;
+            --asgard-red: #9E0B0F;
+            --asgard-silver: #C0C0C0;
+            --asgard-dark: #2C2C2C;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            color: var(--asgard-silver);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        h2 {
+            color: var(--asgard-gold);
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(42, 42, 42, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 0 20px var(--asgard-blue);
+            border: 2px solid var(--asgard-gold);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--asgard-silver);
+            font-weight: bold;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid var(--asgard-gold);
+            border-radius: 5px;
+            background-color: var(--asgard-dark);
+            color: white;
+            font-size: 16px;
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FDBB30'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+        }
+        
+        button {
+            background: linear-gradient(to right, var(--asgard-blue), var(--asgard-red));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:hover {
+            background: linear-gradient(to right, var(--asgard-red), var(--asgard-blue));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        /* Thor's hammer animation */
+        @keyframes hammerGlow {
+            0% { box-shadow: 0 0 10px var(--asgard-gold); }
+            50% { box-shadow: 0 0 20px var(--asgard-gold); }
+            100% { box-shadow: 0 0 10px var(--asgard-gold); }
+        }
+        
+        form:hover {
+            animation: hammerGlow 2s infinite;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Student Performance Prediction</h2>
+   <form method="post">
+  {% csrf_token %}
+  <label>Gender:</label>
+  <select name="gender">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select><br>
+
+  <label>Course (1 - 5):</label>
+  <select name="course">
+    <option value="1">Course 1</option>
+    <option value="2">Course 2</option>
+    <option value="3">Course 3</option>
+    <option value="4">Course 4</option>
+    <option value="5">Course 5</option>
+  </select><br>
+
+  <label>Total Activity:</label>
+  <input type="number" name="total_activity" required><br>
+
+  <label>Average Duration:</label>
+  <input type="number" step="0.1" name="avg_duration" required><br>
+
+  <button type="submit">Predict</button>
+</form>
+
+</body>
+</html>
