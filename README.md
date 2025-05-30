@@ -6,6 +6,9 @@ Project ini merupakan hasil kolaborasi tim dalam mata kuliah *Advanced Database 
 Kami membangun sistem prediksi dan analisis data mahasiswa berbasis **Django** & **Machine Learning**, dengan database **PostgreSQL**.
 
 ---
+## Demo
+
+![Demo GIF](https://github.com/RiskaMellyAgustin/DATA-SCIENCE-PROJECT-EXAM/raw/main/ScreenRecorder-FINPRO-ADBmp4-ezgif.com-crop%20(1).gif)
 
 ## 🚀 Use Cases
 
@@ -154,3 +157,5 @@ MIT License
 📝 Catatan Penting
 File model .pkl dan dataset tidak diunggah ke GitHub karena keterbatasan ukuran.
 Jika Anda ingin menjalankan model secara lokal, silakan hubungi kami untuk mendapatkan file tersebut.
+
+
