@@ -3,44 +3,31 @@ Selamat datang di repository Data Science Project Group 3!
 Project ini merupakan hasil kolaborasi tim dalam mata kuliah Advanced Database & Machine Learning.
 Kami membuat sistem prediksi dan analisis data mahasiswa berbasis Django & Machine Learning, dengan database PostgreSQL.
 
-🚀 Fitur Aplikasi
-✅ Prediksi Dropout Mahasiswa
+🚀 Use Case
 
-Menggunakan model XGBoost & Random Forest
+The platform includes multiple learning analytics use cases, such as:
+1. lysia Dapyaraka
+Best Study Time Prediction
+alysiaapp: Helps students estimate the best study time based on previous grades and activity patterns. By analyzing inputs such as gender, age, target grade, study duration, preferred study time, and target activity, the system leverages clustering and classification algorithms to generate a personalized and more effective study schedule.
 
-Prediksi berdasarkan aktivitas mahasiswa di LMS
+2. Jeny Fattahul
+Predicting Course Difficulty & Recommendations
+jenyapp: predicts course difficulty levels using classification algorithms based on student learning activity data, and recommends appropriate academic interventions or strategies to support both educators and students.
 
-Mode: Input manual & input data existing
+3.Riska Melly
+Smart Dropout & Student Anomalies for Effective Learning Recommendations                   
+mellyapp: This application focuses on early academic intervention by combining dropout risk prediction and anomaly detection based on student learning behavior.
 
-✅ Prediksi Nilai Akhir (Grade Prediction)
+4.Ruth Marsaulina
+The effectiveness of student performance 
+ruthapp: based on gender and each subject predicts whether male and/or female students will perform at a low, medium, or high level in each course. It also provides the percentage of activity types in each course, such as quizzes, forums, individual assignments, and group assignments.
 
-Model regresi: XGBoost
+5.Valencia Damanik
+Student Segmentation & Personalized Support
+valenciaapp: predicts student engagement segments and recommends appropriate academic strategies based on behavioral learning data. The system segments learners into Active, Balanced, or Passive categories using clustering and classification algorithms, and provides recommendations to support each segment’s learning needs.
 
-Input: gender, umur, aktivitas, durasi, dll
 
-✅ Anomaly Detection
 
-Algoritma: Isolation Forest
-
-Analisis mahasiswa dengan potensi anomali
-
-✅ Clustering Mahasiswa (Anomaly Clustering)
-
-Algoritma: KMeans
-
-Kelompokkan mahasiswa dalam cluster "Normal", "Potensi Risiko", "Anomali Tinggi"
-
-✅ Dashboard Statistik & Visualisasi
-
-Total pendapatan, jumlah user aktif, recent subscription
-
-Grafik interaktif (Chart.js)
-
-✅ Manajemen User (Admin & Customer)
-
-Role-based access: Admin & Customer
-
-Admin dapat melihat hasil prediksi semua mahasiswa
 
 🏗️ Tech Stack
 🐍 Python 3.10
@@ -139,36 +126,103 @@ Admin dapat melihat seluruh data prediksi dan hasil analisis.
 csharp
 Copy
 Edit
-├── customerapp/
-├── adminapp/
-├── mellyapp/             # Modul Machine Learning
-│   ├── ml/               # Model .pkl disimpan di sini
-│   ├── views.py
-│   ├── forms.py
-│   ├── ...
-├── templates/
-│   ├── index.html
-│   ├── dashboard.html
-│   └── ...
-├── static/
-│   ├── css/
-│   ├── js/
-├── manage.py
-├── requirements.txt
-├── README.md
-└── ...
+├───about
+│   ├───migrations
+│   │   └───__pycache__
+│   └───__pycache__
+├───adminapp
+│   ├───migrations
+│   │   └───__pycache__
+│   └───__pycache__
+├───alysiaapp
+│   ├───migrations
+│   │   └───__pycache__
+│   ├───ml_scripts
+│   │   ├───alysiaapp
+│   │   │   └───ml_scripts
+│   │   ├───prediksi
+│   │   │   └───models
+│   │   └───__pycache__
+│   ├───static
+│   │   └───alysiaapp
+│   ├───templates
+│   └───__pycache__
+├───ds_project
+│   └───__pycache__
+├───home
+│   ├───migrations
+│   │   └───__pycache__
+│   ├───static
+│   │   └───home
+│   ├───templates
+│   │   └───home
+│   └───__pycache__
+├───jenyapp
+│   ├───migrations
+│   │   └───__pycache__
+│   ├───static
+│   │   └───jenyapp
+│   │       ├───css
+│   │       ├───data
+│   │       ├───images
+│   │       └───model
+│   ├───templates
+│   │   └───jenyapp
+│   └───__pycache__
+├───mellyapp
+│   ├───migrations
+│   │   └───__pycache__
+│   ├───ml
+│   │   ├───anomaly
+│   │   ├───catboost_info
+│   │   │   ├───learn
+│   │   │   └───tmp
+│   │   ├───clustering
+│   │   ├───dropout
+│   │   ├───Exist_Data
+│   │   └───Training
+│   ├───static
+│   │   └───mellyapp
+│   │       └───images
+│   ├───templates
+│   │   └───mellyapp
+│   └───__pycache__
+├───ml
+│   ├───migrations
+│   │   └───__pycache__
+│   └───__pycache__
+├───pkl_file
+├───ruthapp
+│   ├───migrations
+│   │   └───__pycache__
+│   ├───ml
+│   │   ├───ml_model
+│   │   └───ruthapp
+│   │       └───ml
+│   ├───templates
+│   │   └───ruthapp
+│   └───__pycache__
+├───templates
+│   └───admin
+└───valenciaapp
+    ├───migrations
+    │   └───__pycache__
+    ├───static
+    │   └───img
+    ├───templates
+    └───__pycache__
+
+
 👥 Tim Kami
 💡 Riska Melly Agustin
 
-💡 Alysia
+💡 Alysia Dapyaraka
 
-💡 Melly
+💡 Jeny Fatahul
 
-💡 Ruth
+💡 Ruth Marshaulina
 
-💡 Jeny
-
-💡 Valencia
+💡 Valencia Damanik
 
 📄 License
 MIT License
