@@ -5,7 +5,7 @@ import math
 from django.shortcuts import render
 from .forms import PredictForm
 from .predict import DifficultyPredictor
-# from matplotlib import ticker
+from matplotlib import ticker
 from .models import Prediction
 
 

@@ -2,8 +2,9 @@ from django.db import models
 
 
 class Prediction(models.Model):
-    # class Meta:
-    #     db_table = 'jenyapp_prediction'
+    class Meta:
+        db_table = 'jenyapp_prediction'
+        
     GENDER_CHOICES = (
         ("M", "Male"),
         ("F", "Female"),
