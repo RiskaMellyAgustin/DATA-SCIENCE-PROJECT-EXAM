@@ -1,59 +1,62 @@
-🎓 Data Science Project - Group 3
-Selamat datang di repository Data Science Project Group 3!
-Project ini merupakan hasil kolaborasi tim dalam mata kuliah Advanced Database & Machine Learning.
-Kami membuat sistem prediksi dan analisis data mahasiswa berbasis Django & Machine Learning, dengan database PostgreSQL.
+# 🎓 Data Science Project - Group 3
 
-🚀 Use Case
+Selamat datang di repository **Data Science Project Group 3**!  
+Project ini merupakan hasil kolaborasi tim dalam mata kuliah *Advanced Database & Machine Learning*.
 
-The platform includes multiple learning analytics use cases, such as:
-1. lysia Dapyaraka
-Best Study Time Prediction
-alysiaapp: Helps students estimate the best study time based on previous grades and activity patterns. By analyzing inputs such as gender, age, target grade, study duration, preferred study time, and target activity, the system leverages clustering and classification algorithms to generate a personalized and more effective study schedule.
+Kami membangun sistem prediksi dan analisis data mahasiswa berbasis **Django** & **Machine Learning**, dengan database **PostgreSQL**.
 
-2. Jeny Fattahul
-Predicting Course Difficulty & Recommendations
-jenyapp: predicts course difficulty levels using classification algorithms based on student learning activity data, and recommends appropriate academic interventions or strategies to support both educators and students.
+---
 
-3.Riska Melly
-Smart Dropout & Student Anomalies for Effective Learning Recommendations                   
-mellyapp: This application focuses on early academic intervention by combining dropout risk prediction and anomaly detection based on student learning behavior.
+## 🚀 Use Cases
 
-4.Ruth Marsaulina
-The effectiveness of student performance 
-ruthapp: based on gender and each subject predicts whether male and/or female students will perform at a low, medium, or high level in each course. It also provides the percentage of activity types in each course, such as quizzes, forums, individual assignments, and group assignments.
+### 1. **Alysia Dapyaraka – Best Study Time Prediction**
+📱 `alysiaapp`  
+Membantu mahasiswa memperkirakan waktu belajar terbaik berdasarkan nilai sebelumnya dan pola aktivitas.  
+Input: gender, umur, target nilai, durasi belajar, waktu belajar favorit, target aktivitas.  
+🔍 *Clustering & Classification* digunakan untuk menghasilkan jadwal belajar personal dan efektif.
 
-5.Valencia Damanik
-Student Segmentation & Personalized Support
-valenciaapp: predicts student engagement segments and recommends appropriate academic strategies based on behavioral learning data. The system segments learners into Active, Balanced, or Passive categories using clustering and classification algorithms, and provides recommendations to support each segment’s learning needs.
+### 2. **Jeny Fatahul – Predicting Course Difficulty & Recommendations**
+📱 `jenyapp`  
+Memprediksi tingkat kesulitan mata kuliah dengan algoritma klasifikasi berdasarkan aktivitas belajar mahasiswa.  
+Memberikan rekomendasi intervensi akademik untuk mendukung dosen dan mahasiswa.
 
+### 3. **Riska Melly – Smart Dropout & Student Anomalies**
+📱 `mellyapp`  
+Aplikasi untuk intervensi dini dengan memprediksi risiko dropout dan mendeteksi anomali berdasarkan perilaku belajar mahasiswa.
 
+### 4. **Ruth Marsaulina – Effectiveness of Student Performance**
+📱 `ruthapp`  
+Memprediksi performa berdasarkan gender di setiap mata kuliah: rendah, sedang, atau tinggi.  
+Menampilkan persentase aktivitas seperti kuis, forum, tugas individu, dan tugas kelompok.
 
+### 5. **Valencia Damanik – Student Segmentation & Personalized Support**
+📱 `valenciaapp`  
+Memprediksi segmentasi keterlibatan mahasiswa (Aktif, Seimbang, atau Pasif).  
+Memberikan rekomendasi strategi belajar yang sesuai berdasarkan data perilaku.
 
-🏗️ Tech Stack
-🐍 Python 3.10
+---
 
-🌐 Django 4.x
+## 🏗️ Tech Stack
 
-🧠 scikit-learn, XGBoost, CatBoost
+- 🐍 Python 3.10  
+- 🌐 Django 4.x  
+- 🧠 scikit-learn, XGBoost, CatBoost  
+- 🗄️ PostgreSQL  
+- 🎨 TailwindCSS, Chart.js  
+- 🌎 HTML, CSS, JavaScript  
 
-🗄️ PostgreSQL
+---
 
-🎨 TailwindCSS, Chart.js
+## 📦 Cara Install & Jalankan Project
 
-🌎 HTML, CSS, JavaScript
-
-📦 Cara Install & Jalankan Project
-1️⃣ Clone Repository
-bash
-Copy
-Edit
+### 1️⃣ Clone Repository
+```bash
 git clone https://github.com/RiskaMellyAgustin/DATA-SCIENCE-PROJECT-EXAM.git
 cd DATA-SCIENCE-PROJECT-EXAM
-2️⃣ Buat Virtual Environment
-bash
-Copy
-Edit
+
+### 2️⃣ Buat Virtual Environment
 python -m venv venv
+
 3️⃣ Aktifkan Virtual Environment
 Windows:
 
@@ -73,13 +76,9 @@ Copy
 Edit
 pip install -r requirements.txt
 5️⃣ Setup Database (PostgreSQL)
-Buat database di PostgreSQL (contoh: datascience_db)
+Buat database di PostgreSQL, contoh: datascience_db
 
 Update settings.py:
-
-python
-Copy
-Edit
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -103,116 +102,41 @@ Copy
 Edit
 python manage.py runserver
 7️⃣ Akses Aplikasi
-Buka browser dan akses:
-
-cpp
-Copy
-Edit
+Buka browser dan kunjungi:
 http://127.0.0.1:8000/
-📊 Cara Menggunakan Aplikasi
-🔎 Prediksi Dropout:
-Masukkan ID Mahasiswa atau data manual untuk melihat hasil prediksi dropout.
 
-📈 Prediksi Grade:
-Isi data aktivitas mahasiswa dan dapatkan prediksi nilai akhir.
+📊 Fitur Aplikasi
+🔎 Prediksi Dropout: Masukkan ID mahasiswa atau data manual untuk melihat hasil prediksi dropout.
 
-🧭 Anomaly Detection & Clustering:
-Lihat analisis cluster di dashboard untuk mendeteksi potensi anomali.
+📈 Prediksi Grade: Masukkan data aktivitas belajar untuk memprediksi nilai akhir.
 
-🔐 Admin Page:
-Admin dapat melihat seluruh data prediksi dan hasil analisis.
+🧭 Anomaly Detection & Clustering: Analisis data dan visualisasi cluster untuk mendeteksi anomali.
+
+🔐 Admin Page: Melihat semua data dan hasil analisis prediktif.
 
 📂 Struktur Folder Penting
-csharp
+<details> <summary>Klik untuk lihat struktur folder</summary>
+swift
 Copy
 Edit
-├───about
-│   ├───migrations
-│   │   └───__pycache__
-│   └───__pycache__
-├───adminapp
-│   ├───migrations
-│   │   └───__pycache__
-│   └───__pycache__
-├───alysiaapp
-│   ├───migrations
-│   │   └───__pycache__
-│   ├───ml_scripts
-│   │   ├───alysiaapp
-│   │   │   └───ml_scripts
-│   │   ├───prediksi
-│   │   │   └───models
-│   │   └───__pycache__
-│   ├───static
-│   │   └───alysiaapp
-│   ├───templates
-│   └───__pycache__
-├───ds_project
-│   └───__pycache__
-├───home
-│   ├───migrations
-│   │   └───__pycache__
-│   ├───static
-│   │   └───home
-│   ├───templates
-│   │   └───home
-│   └───__pycache__
-├───jenyapp
-│   ├───migrations
-│   │   └───__pycache__
-│   ├───static
-│   │   └───jenyapp
-│   │       ├───css
-│   │       ├───data
-│   │       ├───images
-│   │       └───model
-│   ├───templates
-│   │   └───jenyapp
-│   └───__pycache__
-├───mellyapp
-│   ├───migrations
-│   │   └───__pycache__
-│   ├───ml
-│   │   ├───anomaly
-│   │   ├───catboost_info
-│   │   │   ├───learn
-│   │   │   └───tmp
-│   │   ├───clustering
-│   │   ├───dropout
-│   │   ├───Exist_Data
-│   │   └───Training
-│   ├───static
-│   │   └───mellyapp
-│   │       └───images
-│   ├───templates
-│   │   └───mellyapp
-│   └───__pycache__
-├───ml
-│   ├───migrations
-│   │   └───__pycache__
-│   └───__pycache__
-├───pkl_file
-├───ruthapp
-│   ├───migrations
-│   │   └───__pycache__
-│   ├───ml
-│   │   ├───ml_model
-│   │   └───ruthapp
-│   │       └───ml
-│   ├───templates
-│   │   └───ruthapp
-│   └───__pycache__
-├───templates
-│   └───admin
-└───valenciaapp
-    ├───migrations
-    │   └───__pycache__
-    ├───static
-    │   └───img
-    ├───templates
-    └───__pycache__
-
-
+├── about/
+├── adminapp/
+├── alysiaapp/
+│   ├── ml_scripts/
+├── ds_project/
+├── home/
+├── jenyapp/
+│   └── static/jenyapp/{css, data, images, model}
+├── mellyapp/
+│   └── ml/{anomaly, dropout, clustering, catboost_info, ...}
+├── ml/
+├── pkl_file/
+├── ruthapp/
+│   └── ml/ml_model/
+├── templates/
+│   └── admin/
+└── valenciaapp/
+</details>
 👥 Tim Kami
 💡 Riska Melly Agustin
 
@@ -228,5 +152,5 @@ Edit
 MIT License
 
 📝 Catatan Penting
-File .pkl model ML dan dataset tidak diupload ke GitHub karena keterbatasan ukuran.
-Jika Anda ingin menjalankan model secara lokal, silakan hubungi kami untuk mendapatkan file model.
+File model .pkl dan dataset tidak diunggah ke GitHub karena keterbatasan ukuran.
+Jika Anda ingin menjalankan model secara lokal, silakan hubungi kami untuk mendapatkan file tersebut.
